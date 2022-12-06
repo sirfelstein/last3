@@ -89,13 +89,13 @@ int main(int argc, char const *argv[])
 
 	cout << "**********Test 4***********\n";
 	cout << "Tesing count_prime()\n";
-	cout << "Expected: 6\n"; //7919 11 7 5 5 2
-	cout << "Actual  : " << count_prime(l) << "\n";
-	if (count_prime(l) == 6)
+	cout << "Expected: 6\n";
+	int num_prime = count_prime(l);
+	cout << "Actual  : " << num_prime << "\n";
+	if (num_prime == 6)
 		cout << "Test 4 PASSED\n";
 	else
 		cout << "Test 4 FAILED\n";
-
 
 	cout << "**********Test 5***********\n";
 	cout << "Tesing clear()\n";
