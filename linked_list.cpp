@@ -23,9 +23,9 @@ using namespace std;
 *********************************************************************/
 
 Linked_List::Linked_List(){
-    this->length = 0;
-    head = NULL;
-    current = NULL;
+        this->length = 0;
+        head = NULL;
+        current = NULL;
 }
 
 /*********************************************************************
@@ -37,7 +37,7 @@ Linked_List::Linked_List(){
 *********************************************************************/
 
 int Linked_List::get_length(){
-    return length;
+        return length;
 }
 
 /*********************************************************************
@@ -49,7 +49,7 @@ int Linked_List::get_length(){
 *********************************************************************/
 
 Node* Linked_List::get_head() const{
-    return this->head;
+        return this->head;
 }
 
 /*********************************************************************
@@ -61,12 +61,12 @@ Node* Linked_List::get_head() const{
 *********************************************************************/
 
 void Linked_List::print(){
-    current = head;
-    while(current != NULL){
-        cout << current->val << " ";
-        current = current->next;
-    }
-    cout << endl;
+        current = head;
+        while(current != NULL){
+                cout << current->val << " ";
+                current = current->next;
+        }
+        cout << endl;
 }
 
 /*********************************************************************
@@ -78,16 +78,16 @@ void Linked_List::print(){
 *********************************************************************/
 
 void Linked_List::clear(){
-    current = head;
-    Node* temp = NULL;
-    while(current != NULL){
-        temp = current->next;
-        delete current;
-        current = temp;
-    }
-    head = NULL;
-    current = NULL;
-    length = 0;
+        current = head;
+        Node* temp = NULL;
+        while(current != NULL){
+                temp = current->next;
+                delete current;
+                current = temp;
+        }
+        head = NULL;
+        current = NULL;
+        length = 0;
 }
 
 /*********************************************************************
@@ -99,11 +99,11 @@ void Linked_List::clear(){
 *********************************************************************/
 
 void Linked_List::push_front(int x){
-    Node* new_node = new Node();
-    new_node->val = x;
-    new_node->next = head;
-    head = new_node;
-    length++;
+        Node* new_node = new Node();
+        new_node->val = x;
+        new_node->next = head;
+        head = new_node;
+        length++;
 }
 
 /*********************************************************************
@@ -115,17 +115,17 @@ void Linked_List::push_front(int x){
 *********************************************************************/
 
 void Linked_List::push_back(int x){
-    Node* new_node = new Node();
-    current = head;
-    new_node->val = x;
-    new_node->next = NULL;
-    
-    while(current->next != NULL){
-        current = current->next;
-    }
+        Node* new_node = new Node();
+        current = head;
+        new_node->val = x;
+        new_node->next = NULL;
+        
+        while(current->next != NULL){
+                current = current->next;
+        }
 
-    current->next = new_node;
-    length++;
+        current->next = new_node;
+        length++;
 }
 
 /*********************************************************************
@@ -137,31 +137,31 @@ void Linked_List::push_back(int x){
 *********************************************************************/
 
 void Linked_List::insert(int val, unsigned int index){
-    if(index == 0){
-        push_front(val);
-    }
-
-    else if(index == length-1){
-        push_back(val);
-    }
-
-    else if(index > length){
-        cout << val << " cannot be inserted in "  << index << "th index!" <<endl;
-    }
-
-    else{
-        Node* new_node = new Node();
-        current = head;
-        new_node->val = val;
-        for(int i = 0;i < index-1;i++){ 
-            current = current->next;
+        if(index == 0){
+                push_front(val);
         }
 
-        new_node->next = current->next;
-        current->next = new_node;
-        length++;
-    }
-    
+        else if(index == length-1){
+                push_back(val);
+        }
+
+        else if(index > length){
+                cout << val << " cannot be inserted in "  << index << "th index!" <<endl;
+        }
+
+        else{
+                Node* new_node = new Node();
+                current = head;
+                new_node->val = val;
+                for(int i = 0;i < index-1;i++){ 
+                        current = current->next;
+                }
+
+                new_node->next = current->next;
+                current->next = new_node;
+                length++;
+        }
+        
 }
 
 /*********************************************************************
@@ -173,21 +173,21 @@ void Linked_List::insert(int val, unsigned int index){
 *********************************************************************/
 
 void Linked_List::split(Node* source, Node** front, Node** back){
-    Node* fast;
-    Node* slow;
-    slow = source;
-    fast = source->next;
+        Node* fast;
+        Node* slow;
+        slow = source;
+        fast = source->next;
 
-    while(fast != NULL){
-        fast = fast->next;
-        if(fast != NULL){
-            slow = slow->next;
-            fast = fast->next;
+        while(fast != NULL){
+                fast = fast->next;
+                if(fast != NULL){
+                        slow = slow->next;
+                        fast = fast->next;
+                }
         }
-    }
-    *front = source;
-    *back = slow->next;
-    slow->next = NULL;
+        *front = source;
+        *back = slow->next;
+        slow->next = NULL;
 }
 
 /*********************************************************************
@@ -199,17 +199,17 @@ void Linked_List::split(Node* source, Node** front, Node** back){
 *********************************************************************/ 
 
 void Linked_List::mergeSortAscending(Node** headref){
-    Node* head1 = *headref;
-    Node* a;
-    Node* b;
-    if(head1 == NULL || head1->next == NULL){
-        return;
-    }
-    split(head1,&a,&b);
-    mergeSortAscending(&a);
-    mergeSortAscending(&b);
+        Node* head1 = *headref;
+        Node* a;
+        Node* b;
+        if(head1 == NULL || head1->next == NULL){
+                return;
+        }
+        split(head1,&a,&b);
+        mergeSortAscending(&a);
+        mergeSortAscending(&b);
 
-    *headref = recursiveSortAscending(a,b);
+        *headref = recursiveSortAscending(a,b);
 }
 
 /*********************************************************************
@@ -221,17 +221,17 @@ void Linked_List::mergeSortAscending(Node** headref){
 *********************************************************************/ 
 
 void Linked_List::mergeSortDescending(Node** headref){
-    Node* head1 = *headref;
-    Node* a;
-    Node* b;
-    if(head1 == NULL || head1->next == NULL){
-        return;
-    }
-    split(head1,&a,&b);
-    mergeSortDescending(&a);
-    mergeSortDescending(&b);
+        Node* head1 = *headref;
+        Node* a;
+        Node* b;
+        if(head1 == NULL || head1->next == NULL){
+                return;
+        }
+        split(head1,&a,&b);
+        mergeSortDescending(&a);
+        mergeSortDescending(&b);
 
-    *headref = recursiveSortDescending(a,b);
+        *headref = recursiveSortDescending(a,b);
 }
 
 /*********************************************************************
@@ -243,23 +243,23 @@ void Linked_List::mergeSortDescending(Node** headref){
 *********************************************************************/ 
 
 Node* Linked_List::recursiveSortAscending(Node* a, Node* b){
-    Node* result = NULL;
-    if(a == NULL){
-        return b;
-    }
-    else if(b == NULL){
-        return a;
-    }
+        Node* result = NULL;
+        if(a == NULL){
+                return b;
+        }
+        else if(b == NULL){
+                return a;
+        }
 
-    if(a->val <= b->val){
-        result = a; 
-        result->next = recursiveSortAscending(a->next, b);
-    }
-    else{
-        result = b;
-        result->next = recursiveSortAscending(a, b->next);
-    }
-    return result;
+        if(a->val <= b->val){
+                result = a; 
+                result->next = recursiveSortAscending(a->next, b);
+        }
+        else{
+                result = b;
+                result->next = recursiveSortAscending(a, b->next);
+        }
+        return result;
 }
 
 /*********************************************************************
@@ -271,23 +271,23 @@ Node* Linked_List::recursiveSortAscending(Node* a, Node* b){
 *********************************************************************/ 
 
 Node* Linked_List::recursiveSortDescending(Node* a, Node* b){
-    Node* result = NULL;
-    if(a == NULL){
-        return b;
-    }
-    else if(b == NULL){
-        return a;
-    }
+        Node* result = NULL;
+        if(a == NULL){
+                return b;
+        }
+        else if(b == NULL){
+                return a;
+        }
 
-    if(a->val <= b->val){
-        result = b; //store the bigger one
-        result->next = recursiveSortDescending(a, b->next);
-    }
-    else{
-        result = a;
-        result->next = recursiveSortDescending(a->next, b);
-    }
-    return result;
+        if(a->val <= b->val){
+                result = b; //store the bigger one
+                result->next = recursiveSortDescending(a, b->next);
+        }
+        else{
+                result = a;
+                result->next = recursiveSortDescending(a->next, b);
+        }
+        return result;
 }
 
 /*********************************************************************
@@ -299,7 +299,7 @@ Node* Linked_List::recursiveSortDescending(Node* a, Node* b){
 *********************************************************************/ 
 
 void Linked_List::sort_ascending(){ //O(nlogn)
-        mergeSortAscending(&head);//call ascending sort function.
+                mergeSortAscending(&head);//call ascending sort function.
 
 }
 
@@ -312,7 +312,7 @@ void Linked_List::sort_ascending(){ //O(nlogn)
 *********************************************************************/ 
 
 void Linked_List::sort_descending(){ //O(nlogn)
-    mergeSortDescending(&head); //call descending sort function.
+        mergeSortDescending(&head); //call descending sort function.
 }
 
 /*********************************************************************
@@ -324,26 +324,26 @@ void Linked_List::sort_descending(){ //O(nlogn)
 *********************************************************************/ 
 
 int count_prime(const Linked_List& list){ //O(n)*O(x)
-    int count = 0, notPrime, saveHalf, i;
-    Node* current = list.get_head(); // get the head of the list.
-    
-    while(current != NULL){
-        saveHalf = current->val/2;
-        notPrime = 0;
+        int count = 0, notPrime, saveHalf, i;
+        Node* current = list.get_head(); // get the head of the list.
+        
+        while(current != NULL){
+                saveHalf = current->val/2;
+                notPrime = 0;
 		  //don't count 0, 1 and negative numbers as a prime number.
-        if(current->val == 1 || current->val <= 0){ 
-            notPrime = 1;
-         }
-        for(i = 2; i<=saveHalf; i++){
-            if(current->val % i == 0){
-                notPrime = 1;
-                break;
-            }
+                if(current->val == 1 || current->val <= 0){ 
+                        notPrime = 1;
+                 }
+                for(i = 2; i<=saveHalf; i++){
+                        if(current->val % i == 0){
+                                notPrime = 1;
+                                break;
+                        }
+                }
+                if(notPrime == 0){
+                 count++;
+                }
+                current = current->next;
         }
-        if(notPrime == 0){
-         count++;
-        }
-        current = current->next;
-    }
-    return count;
+        return count;
 }

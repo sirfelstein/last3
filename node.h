@@ -12,8 +12,8 @@
 
 class Node{
 public:
-	int val; // the element's value
-	Node *next; // a pointer that replicates a link in a linked list
+		int val; // the element's value
+		Node *next; // a pointer that replicates a link in a linked list
 	
 };
 
