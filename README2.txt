@@ -45,4 +45,18 @@ There are a few limitations with this program, because the test file is already
 created. If the user wants to test different elements, they would need to change
 the test_linked_list file before making and running the program.
 
-The sort_ascending file
+The sort_ascending function will first divide the list into two equal sized
+sections. The program will then sort the two smaller lists into ascending
+order using recursive programming. Then, the elements will be merged into
+a larger, sorted list. The list will then be returned to the user.
+
+The sort_descending function will work similarly by finding the middle of 
+the larger list and divide it into two smaller lists. These smaller lists
+will then be sorted in descending order and the elements of these smaller
+lists will then be merged into a larger list in descending order. This final
+list will then be returned to the user. (or tested from the testing file) 
+
+The count_prime function will look through the entire given list and check
+if the selected number is prime. If the selected number is prime, it will 
+add one to the counter. The function will then return the amount of prime
+numbers inside the list. 
