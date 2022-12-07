@@ -14,10 +14,10 @@
 
 class Linked_List {
 private:
-		unsigned int length; // the number of nodes contained in the list
+		unsigned int length; // the amount of elements
 		Node* head; 
-		Node* current;// a pointer to the first node in the list
-		// anything else you need...
+		Node* current;
+		
 public:
 		Linked_List(); 
 
@@ -31,12 +31,13 @@ public:
 		void push_back(int); // insert a new value at the back of the list 
 		void insert(int val, unsigned int index); // insert a new value in the list at the specified index 
 		void split(Node*, Node**, Node**);
+
 		void mergeSortAscending(Node**);
 		void mergeSortDescending(Node**);
 		Node* recursiveSortAscending(Node*, Node*);
 		Node* recursiveSortDescending(Node*, Node*);
+
 		void sort_ascending(); // sort the nodes in ascending order. You must implement the recursive Merge Sort algorithm
-	
 		// Note: it's okay if sort_ascending() calls a recursive private function to perform the sorting.
 		void sort_descending(); // sort the nodes in descending order
 		void swap_node(Node**, Node*, Node*, Node*);

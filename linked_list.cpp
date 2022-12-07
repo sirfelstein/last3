@@ -280,7 +280,7 @@ Node* Linked_List::recursiveSortDescending(Node* a, Node* b){
         }
 
         if(a->val <= b->val){
-                result = b; //store the bigger one
+                result = b; 
                 result->next = recursiveSortDescending(a, b->next);
         }
         else{
@@ -298,8 +298,8 @@ Node* Linked_List::recursiveSortDescending(Node* a, Node* b){
 ** Post-Conditions: list is now fully sorted in ascending order
 *********************************************************************/ 
 
-void Linked_List::sort_ascending(){ //O(nlogn)
-                mergeSortAscending(&head);//call ascending sort function.
+void Linked_List::sort_ascending(){ 
+                mergeSortAscending(&head);
 
 }
 
@@ -311,8 +311,8 @@ void Linked_List::sort_ascending(){ //O(nlogn)
 ** Post-Conditions: list is now fully sorted in descending order
 *********************************************************************/ 
 
-void Linked_List::sort_descending(){ //O(nlogn)
-        mergeSortDescending(&head); //call descending sort function.
+void Linked_List::sort_descending(){ 
+        mergeSortDescending(&head); 
 }
 
 /*********************************************************************
@@ -323,14 +323,14 @@ void Linked_List::sort_descending(){ //O(nlogn)
 ** Post-Conditions: the amount of prime numbers in the list is now known
 *********************************************************************/ 
 
-int count_prime(const Linked_List& list){ //O(n)*O(x)
+int count_prime(const Linked_List& list){ 
         int count = 0, notPrime, saveHalf, i;
-        Node* current = list.get_head(); // get the head of the list.
+        Node* current = list.get_head(); 
         
         while(current != NULL){
                 saveHalf = current->val/2;
                 notPrime = 0;
-		  //don't count 0, 1 and negative numbers as a prime number.
+		  // if the element is 1, 0, or negative it is not prime
                 if(current->val == 1 || current->val <= 0){ 
                         notPrime = 1;
                  }
