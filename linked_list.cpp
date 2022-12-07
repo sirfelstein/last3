@@ -1,9 +1,11 @@
-/***********************************************************************************
- * Program:linked_list.cpp
- * Author: Hyunjae Kim
- * Date: 08/14/2020
- * Description: This is cpp file of linked list.
- * ***********************************************************************************/
+/*********************************************************************
+** Program Filename: linked_list.cpp
+** Author: Caden Runyan
+** Date: 12-3-22
+** Description: 
+** Input:NA
+** Output: does various tasks with the link list
+*********************************************************************/
 
 #include <iostream>
 #include <string>
@@ -12,38 +14,52 @@
 
 using namespace std;
 
+ /*********************************************************************
+** Function:Linked_List()
+** Description:constructor
+** Parameters:NA
+** Pre-Conditions:NA
+** Post-Conditions:liked list is constructed
+*********************************************************************/
 
-/*********************************************************
- * Functions: Linked_List()
- * Description: This is a constructor of linked list.
- * *******************************************************/
 Linked_List::Linked_List(){
     this->length = 0;
     head = NULL;
     current = NULL;
 }
 
-/*********************************************************
- * Functions: get_length()
- * Description: This returns the number of nodes.
- * *******************************************************/
+/*********************************************************************
+** Function: get_length()
+** Description: returns the amount of nodes in the list
+** Parameters: NA
+** Pre-Conditions: the list exists
+** Post-Conditions: amount of nodes in lisk is known
+*********************************************************************/
+
 int Linked_List::get_length(){
     return length;
 }
 
-/*********************************************************
- * Functions: get_head()
- * Description: This returns the head of the node.
- * *******************************************************/
+/*********************************************************************
+** Function: get_head()
+** Description: returns which node is the head of the list
+** Parameters: NA
+** Pre-Conditions: the list exists with a head
+** Post-Conditions: head of list is known
+*********************************************************************/
+
 Node* Linked_List::get_head() const{
     return this->head;
 }
 
+/*********************************************************************
+** Function: print()
+** Description: shows the list of nodes to the user
+** Parameters: NA
+** Pre-Conditions: list exists
+** Post-Conditions: user can see the list
+*********************************************************************/
 
-/*********************************************************
- * Functions: print()
- * Description: This prints the list of the nodes.
- * *******************************************************/
 void Linked_List::print(){
     current = head;
     while(current != NULL){
@@ -53,11 +69,14 @@ void Linked_List::print(){
     cout << endl;
 }
 
+/*********************************************************************
+** Function: clear()
+** Description: deletes all nodes in the list, making length 0
+** Parameters: NA
+** Pre-Conditions: the list exists
+** Post-Conditions: the list no longer has any nodes in it
+*********************************************************************/
 
-/*********************************************************
- * Functions: clear()
- * Description: This deletes the nodes.
- * *******************************************************/
 void Linked_List::clear(){
     current = head;
     Node* temp = NULL;
@@ -72,9 +91,13 @@ void Linked_List::clear(){
 }
 
 /*********************************************************************
- * Functions: push_front(int ele)
- * Description: This appends the new node to the front of the list.
- * *******************************************************************/
+** Function: push_front(int ele)
+** Description: adds the new element to the front of the list
+** Parameters: int ele
+** Pre-Conditions: list exists and element is given
+** Post-Conditions: a new element should be added to the beginning of the linked list
+*********************************************************************/
+
 void Linked_List::push_front(int ele){
     Node* new_node = new Node();
     new_node->val = ele;
@@ -84,9 +107,13 @@ void Linked_List::push_front(int ele){
 }
 
 /*********************************************************************
- * Functions: push_back(int ele)
- * Description: This appends the new node to the last of the list.
- * *******************************************************************/
+** Function: push_back(int ele)
+** Description: adds an element tot the end of the list
+** Parameters: int ele
+** Pre-Conditions: list exists and element is given
+** Post-Conditions: a new element should be added to the end of the linked list
+*********************************************************************/
+
 void Linked_List::push_back(int ele){
     Node* new_node = new Node();
     current = head;
@@ -101,10 +128,14 @@ void Linked_List::push_back(int ele){
     length++;
 }
 
-/****************************************************************************
- * Functions: insert(int ele)
- * Description: This appends the new node to the specific index of the list.
- * **************************************************************************/
+/*********************************************************************
+** Function: insert(int val, unsigned int index)
+** Description: this will insert a given value to a given index in the list
+** Parameters: int val, unsigned int index
+** Pre-Conditions: list exists and element and index are given
+** Post-Conditions: an element is added to the specified index of the linked list
+*********************************************************************/
+
 void Linked_List::insert(int val, unsigned int index){
     if(index == 0){
         push_front(val);
@@ -134,10 +165,13 @@ void Linked_List::insert(int val, unsigned int index){
 }
 
 /*********************************************************************
- * Functions: fbs(Node* source, Node** front, Node** back)
- * Description: This splits the nodes of the list into half, and 
- *              return the two lists. 
- * *******************************************************************/
+** Function: fbs(Node* source, Node** front, Node** back)
+** Description: divides the larger list into two smaller lists
+** Parameters: Node* source, Node** front, Node** back
+** Pre-Conditions: larger, initial list exists
+** Post-Conditions: two smaller lists are created from the larger one
+*********************************************************************/
+
 void Linked_List::fbs(Node* source, Node** front, Node** back){
     Node* fast;
     Node* slow;
@@ -155,10 +189,15 @@ void Linked_List::fbs(Node* source, Node** front, Node** back){
     *back = slow->next;
     slow->next = NULL;
 }
+
 /*********************************************************************
- * Functions: merge_sort(Node** headref)
- * Description: This merges the entire nodes of list as ascending order.
- * *******************************************************************/
+** Function: merge_sort(Node** headref)
+** Description: merges the elements of the list from smallest to largest
+** Parameters: Node** headref
+** Pre-Conditions: list exists with all of the nodes
+** Post-Conditions: list is now sorted in ascending order
+*********************************************************************/ 
+
 void Linked_List::merge_sort(Node** headref){//sort ascending order.
     Node* head1 = *headref;
     Node* a;
@@ -174,9 +213,13 @@ void Linked_List::merge_sort(Node** headref){//sort ascending order.
 }
 
 /*********************************************************************
- * Functions: merge_sort2(Node** headref)
- * Description: This merges the entire nodes of list as descending order.
- * *******************************************************************/
+** Function: merge_sort2(Node** headref)
+** Description: merges the elements of the list from largest to smallest
+** Parameters: Node** headref
+** Pre-Conditions: list exists with all of the nodes
+** Post-Conditions: list is now sorted in descending order
+*********************************************************************/ 
+
 void Linked_List::merge_sort2(Node** headref){//sort descending order.
     Node* head1 = *headref;
     Node* a;
@@ -192,9 +235,13 @@ void Linked_List::merge_sort2(Node** headref){//sort descending order.
 }
 
 /*********************************************************************
- * Functions: sorted_merge(Node* a, Node* b)
- * Description: This sorts the  nodes of sublist as ascending order.
- * *******************************************************************/
+** Function: sorted_merge(Node* a, Node* b)
+** Description: sort elements in ascending order
+** Parameters: Node* a, Node* b
+** Pre-Conditions: list exists with nodes
+** Post-Conditions: elements are now sorted in ascending order
+*********************************************************************/ 
+
 Node* Linked_List::sorted_merge(Node* a, Node* b){
     Node* result = NULL;
     if(a == NULL){
@@ -216,9 +263,13 @@ Node* Linked_List::sorted_merge(Node* a, Node* b){
 }
 
 /*********************************************************************
- * Functions: sorted_merge(Node* a, Node* b)
- * Description: This sorts the  nodes of sublist as descending order.
- * *******************************************************************/
+** Function: sorted_merge2(Node* a, Node* b)
+** Description: sorts elements in descending order
+** Parameters: Node* a, Node* b
+** Pre-Conditions: list exists with nodes
+** Post-Conditions: elements are now sorted in descending order
+*********************************************************************/ 
+
 Node* Linked_List::sorted_merge2(Node* a, Node* b){
     Node* result = NULL;
     if(a == NULL){
@@ -238,29 +289,40 @@ Node* Linked_List::sorted_merge2(Node* a, Node* b){
     }
     return result;
 }
+
 /*********************************************************************
- * Functions: sort_ascending()
- * Description: This sorts the  nodes of list as ascending order.
- * *******************************************************************/
+** Function: sort_ascending()
+** Description: will sort all of the elements in the list in ascending order
+** Parameters: NA
+** Pre-Conditions: list exists 
+** Post-Conditions: list is now fully sorted in ascending order
+*********************************************************************/ 
+
 void Linked_List::sort_ascending(){ //O(nlogn)
         merge_sort(&head);//call ascending sort function.
 
 }
 
-
 /*********************************************************************
- * Functions: sort_descending()
- * Description: This sorts the  nodes of list as descending order.
- * *******************************************************************/
+** Function: sort_descending
+** Description: will sort all of the elements in the list in descending order
+** Parameters: NA
+** Pre-Conditions: list exists
+** Post-Conditions: list is now fully sorted in descending order
+*********************************************************************/ 
+
 void Linked_List::sort_descending(){ //O(nlogn)
     merge_sort2(&head); //call descending sort function.
 }
 
-
 /*********************************************************************
- * Functions: count_prime()
- * Description: This counts the number of prime numbers in the list.
- * *******************************************************************/
+** Function: count_prime(const Linked_list& list)
+** Description: this will return the amount of prime numbers in the list
+** Parameters: const Linked_List& list
+** Pre-Conditions: list exists
+** Post-Conditions: the amount of prime numbers in the list is now known
+*********************************************************************/ 
+
 int count_prime(const Linked_List& list){ //O(n)*O(x)
     int count = 0, flag,i,m;
     Node* current = list.get_head(); // get the head of the list.

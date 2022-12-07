@@ -1,9 +1,11 @@
-/***********************************************************************************
- * Program:linked_list.h
- * Author: Hyunjae Kim
- * Date: 08/14/2020
- * Description: This is header file of linked list
- * ***********************************************************************************/
+ /*********************************************************************
+** Program Filename: linked_list.h
+** Author: Caden Runyan
+** Date: 12-3-22
+** Description: header file for linked_list.cpp and test_linked_list.cpp
+** Input: NA
+** Output: NA
+*********************************************************************/
 
 #ifndef LINKED_LIST
 #define LINKED_LIST

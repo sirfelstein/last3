@@ -1,5 +1,5 @@
 CC = g++ -g 
-exe_file = driver
+exe_file = run
 
 all: $(exe_file)
 

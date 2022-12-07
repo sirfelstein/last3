@@ -9,6 +9,7 @@ void pause() {
         cin.ignore(256, '\n');
 }
 
+//Here is the pattern funtion that runs and outputs the fractal
 void pattern(int n, int col){
 
 	if (n == 0) return;
@@ -41,11 +42,12 @@ void pattern(int n, int col){
 
 int main(int argc, char const *argv[])
 {
-	int programChoice = 0;
+	int programChoice = 0;	//the console will ask the user which program to run
 	cout<<"Enter 1 to run the fractal recursion program and 2 to run the linked list program"<<endl;
 	cin >> programChoice;
 
-	if(programChoice == 1){
+//if the user chooses to run the recursive fractal, the following code will run, recursively calling the pattern function above
+	if(programChoice == 1){ 
 		int stars;
         int spaces;
         cout << "Enter a number"<<endl;
@@ -57,8 +59,8 @@ int main(int argc, char const *argv[])
         cout<<endl;
 	}
 
+//if the user does not choose to run the fractal, the test_linked_list.cpp file will run as it is
 	else{
-
 	Linked_List l;
 	cout << "\n\nList successfully created!!\n\n";;
 
