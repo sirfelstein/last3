@@ -9,6 +9,35 @@ void pause() {
         cin.ignore(256, '\n');
 }
 
+void pattern(int n, int col){
+
+	if (n == 0) return;
+
+	if (n == 1){
+
+        for (int a = 0;a<2*col;a++){
+                cout<<" ";  
+        }
+        cout<<"* ";
+        cout<<endl;
+	return;
+	}
+	else{
+
+        pattern(n-2, col+1);
+        for (int a = 0; a < 2*col; a++){
+                cout<<" ";
+        }
+
+        for (int b = 0; b < n; b++){
+                cout<<"* ";
+        }
+
+        cout<<endl;
+        pattern(n-2, 1+col);
+ 
+ 	}
+ }
 
 int main(int argc, char const *argv[])
 {
@@ -17,7 +46,15 @@ int main(int argc, char const *argv[])
 	cin >> programChoice;
 
 	if(programChoice == 1){
-		cout<<"run fractal program"<<endl;
+		int stars;
+        int spaces;
+        cout << "Enter a number"<<endl;
+        cin >> stars;
+        cout << "Enter a second number"<<endl;
+        cin >> spaces;
+        cout<<endl;
+        pattern(stars, spaces);
+        cout<<endl;
 	}
 
 	else{
