@@ -324,23 +324,23 @@ void Linked_List::sort_descending(){ //O(nlogn)
 *********************************************************************/ 
 
 int count_prime(const Linked_List& list){ //O(n)*O(x)
-    int count = 0, flag,i,m;
+    int count = 0, notPrime, saveHalf, i;
     Node* current = list.get_head(); // get the head of the list.
     
     while(current != NULL){
-        m = current->val/2;
-        flag = 0;
+        saveHalf = current->val/2;
+        notPrime = 0;
 		  //don't count 0, 1 and negative numbers as a prime number.
         if(current->val == 1 || current->val <= 0){ 
-            flag = 1;
+            notPrime = 1;
          }
-        for(i = 2;i <=m;i++){
+        for(i = 2; i<=saveHalf; i++){
             if(current->val % i == 0){
-                flag = 1;
+                notPrime = 1;
                 break;
             }
         }
-        if(flag == 0){
+        if(notPrime == 0){
          count++;
         }
         current = current->next;

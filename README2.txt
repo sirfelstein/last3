@@ -1,29 +1,3 @@
-1. Your name and ONID:
-
-2. Description: One paragraph advertising what your program does (for a user who knows
-nothing about this assignment, does not know C++, and is not going to read your code).
-Highlight any special features:
-
-3. Instructions: Step-by-step instructions telling the user how to compile and run your
-program. Each menu choice should be described. If you expect a certain kind of input at
-specific steps, inform the user what the requirements are. Include examples to guide the
-user:
-
-4. Limitations: Describe any known limitations for things the user might want or try to do
-but that program does not do/handle:
-
-5. Extra credit: If your program includes extra credit work, describe it here for
-the user:
-
-6. Complexity analysis: For each of the following function, explain the
-algorithm you used and the Big O for runtime complexity:
-a. sort_ascending():
-
-b. sort_descending():
-
-c. count_prime():
-
-
 TA guess: Zakarie Leskowsky
 
 Caden Runyan - 934382825
@@ -49,14 +23,23 @@ The sort_ascending function will first divide the list into two equal sized
 sections. The program will then sort the two smaller lists into ascending
 order using recursive programming. Then, the elements will be merged into
 a larger, sorted list. The list will then be returned to the user.
+This function has a runtime complexity of O(nlogn)
 
 The sort_descending function will work similarly by finding the middle of 
 the larger list and divide it into two smaller lists. These smaller lists
 will then be sorted in descending order and the elements of these smaller
 lists will then be merged into a larger list in descending order. This final
 list will then be returned to the user. (or tested from the testing file) 
+This function has a runtime complexity of O(nlogn)
 
 The count_prime function will look through the entire given list and check
-if the selected number is prime. If the selected number is prime, it will 
-add one to the counter. The function will then return the amount of prime
-numbers inside the list. 
+if the selected number is prime. It does this by repeating the code until 
+the end of the list. It first sets a save variable to 0 (unless the element 
+being tested is 0, 1, or negative) which will stay 0 if the number is prime, 
+and change to 1 if the numebr is not prime. It then calculates half of the 
+element and saves that number in another save variable. It then checks the 
+remainder of the element divided by i starting at 2 to make sure it is not 
+0 (which would mean it is not prime). It will repeat this until the end of 
+the list. If the selected number is prime, it will add one to the counter. 
+The function will then return the amount of prime numbers inside the list. 
+This function has a runtime complexity of O(n * [amount of elements in list])
