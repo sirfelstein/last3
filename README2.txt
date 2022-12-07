@@ -19,6 +19,8 @@ There are a few limitations with this program, because the test file is already
 created. If the user wants to test different elements, they would need to change
 the test_linked_list file before making and running the program.
 
+EC: recursive descending sorting
+
 The sort_ascending function will first divide the list into two equal sized
 sections. The program will then sort the two smaller lists into ascending
 order using recursive programming. Then, the elements will be merged into

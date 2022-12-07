@@ -91,33 +91,33 @@ void Linked_List::clear(){
 }
 
 /*********************************************************************
-** Function: push_front(int ele)
+** Function: push_front(int x)
 ** Description: adds the new element to the front of the list
-** Parameters: int ele
+** Parameters: int x
 ** Pre-Conditions: list exists and element is given
 ** Post-Conditions: a new element should be added to the beginning of the linked list
 *********************************************************************/
 
-void Linked_List::push_front(int ele){
+void Linked_List::push_front(int x){
     Node* new_node = new Node();
-    new_node->val = ele;
+    new_node->val = x;
     new_node->next = head;
     head = new_node;
     length++;
 }
 
 /*********************************************************************
-** Function: push_back(int ele)
+** Function: push_back(int x)
 ** Description: adds an element tot the end of the list
-** Parameters: int ele
+** Parameters: int x
 ** Pre-Conditions: list exists and element is given
 ** Post-Conditions: a new element should be added to the end of the linked list
 *********************************************************************/
 
-void Linked_List::push_back(int ele){
+void Linked_List::push_back(int x){
     Node* new_node = new Node();
     current = head;
-    new_node->val = ele;
+    new_node->val = x;
     new_node->next = NULL;
     
     while(current->next != NULL){
@@ -153,7 +153,7 @@ void Linked_List::insert(int val, unsigned int index){
         Node* new_node = new Node();
         current = head;
         new_node->val = val;
-        for(int i = 0;i < index-1;i++){ //go to the index
+        for(int i = 0;i < index-1;i++){ 
             current = current->next;
         }
 
@@ -191,14 +191,14 @@ void Linked_List::fbs(Node* source, Node** front, Node** back){
 }
 
 /*********************************************************************
-** Function: merge_sort(Node** headref)
+** Function: mergeSortAscending(Node** headref)
 ** Description: merges the elements of the list from smallest to largest
 ** Parameters: Node** headref
 ** Pre-Conditions: list exists with all of the nodes
 ** Post-Conditions: list is now sorted in ascending order
 *********************************************************************/ 
 
-void Linked_List::merge_sort(Node** headref){//sort ascending order.
+void Linked_List::mergeSortAscending(Node** headref){
     Node* head1 = *headref;
     Node* a;
     Node* b;
@@ -206,21 +206,21 @@ void Linked_List::merge_sort(Node** headref){//sort ascending order.
         return;
     }
     fbs(head1,&a,&b);
-    merge_sort(&a);
-    merge_sort(&b);
+    mergeSortAscending(&a);
+    mergeSortAscending(&b);
 
-    *headref = sorted_merge(a,b);
+    *headref = recursiveSortAscending(a,b);
 }
 
 /*********************************************************************
-** Function: merge_sort2(Node** headref)
+** Function: mergeSortDescending(Node** headref)
 ** Description: merges the elements of the list from largest to smallest
 ** Parameters: Node** headref
 ** Pre-Conditions: list exists with all of the nodes
 ** Post-Conditions: list is now sorted in descending order
 *********************************************************************/ 
 
-void Linked_List::merge_sort2(Node** headref){//sort descending order.
+void Linked_List::mergeSortDescending(Node** headref){
     Node* head1 = *headref;
     Node* a;
     Node* b;
@@ -228,21 +228,21 @@ void Linked_List::merge_sort2(Node** headref){//sort descending order.
         return;
     }
     fbs(head1,&a,&b);
-    merge_sort2(&a);
-    merge_sort2(&b);
+    mergeSortDescending(&a);
+    mergeSortDescending(&b);
 
-    *headref = sorted_merge2(a,b);
+    *headref = recursiveSortDescending(a,b);
 }
 
 /*********************************************************************
-** Function: sorted_merge(Node* a, Node* b)
+** Function: recursiveSortAscending(Node* a, Node* b)
 ** Description: sort elements in ascending order
 ** Parameters: Node* a, Node* b
 ** Pre-Conditions: list exists with nodes
 ** Post-Conditions: elements are now sorted in ascending order
 *********************************************************************/ 
 
-Node* Linked_List::sorted_merge(Node* a, Node* b){
+Node* Linked_List::recursiveSortAscending(Node* a, Node* b){
     Node* result = NULL;
     if(a == NULL){
         return b;
@@ -252,25 +252,25 @@ Node* Linked_List::sorted_merge(Node* a, Node* b){
     }
 
     if(a->val <= b->val){
-        result = a; //store the smaller one
-        result->next = sorted_merge(a->next, b);
+        result = a; 
+        result->next = recursiveSortAscending(a->next, b);
     }
     else{
         result = b;
-        result->next = sorted_merge(a, b->next);
+        result->next = recursiveSortAscending(a, b->next);
     }
     return result;
 }
 
 /*********************************************************************
-** Function: sorted_merge2(Node* a, Node* b)
+** Function: recursiveSortDescending(Node* a, Node* b)
 ** Description: sorts elements in descending order
 ** Parameters: Node* a, Node* b
 ** Pre-Conditions: list exists with nodes
 ** Post-Conditions: elements are now sorted in descending order
 *********************************************************************/ 
 
-Node* Linked_List::sorted_merge2(Node* a, Node* b){
+Node* Linked_List::recursiveSortDescending(Node* a, Node* b){
     Node* result = NULL;
     if(a == NULL){
         return b;
@@ -281,11 +281,11 @@ Node* Linked_List::sorted_merge2(Node* a, Node* b){
 
     if(a->val <= b->val){
         result = b; //store the bigger one
-        result->next = sorted_merge2(a, b->next);
+        result->next = recursiveSortDescending(a, b->next);
     }
     else{
         result = a;
-        result->next = sorted_merge2(a->next, b);
+        result->next = recursiveSortDescending(a->next, b);
     }
     return result;
 }
@@ -299,7 +299,7 @@ Node* Linked_List::sorted_merge2(Node* a, Node* b){
 *********************************************************************/ 
 
 void Linked_List::sort_ascending(){ //O(nlogn)
-        merge_sort(&head);//call ascending sort function.
+        mergeSortAscending(&head);//call ascending sort function.
 
 }
 
@@ -312,7 +312,7 @@ void Linked_List::sort_ascending(){ //O(nlogn)
 *********************************************************************/ 
 
 void Linked_List::sort_descending(){ //O(nlogn)
-    merge_sort2(&head); //call descending sort function.
+    mergeSortDescending(&head); //call descending sort function.
 }
 
 /*********************************************************************

@@ -31,10 +31,10 @@ public:
 	void push_back(int); // insert a new value at the back of the list 
 	void insert(int val, unsigned int index); // insert a new value in the list at the specified index 
 	void fbs(Node*, Node**, Node**);
-	void merge_sort(Node**);
-	void merge_sort2(Node**);
-	Node* sorted_merge(Node*, Node*);
-	Node* sorted_merge2(Node*, Node*);
+	void mergeSortAscending(Node**);
+	void mergeSortDescending(Node**);
+	Node* recursiveSortAscending(Node*, Node*);
+	Node* recursiveSortDescending(Node*, Node*);
 	void sort_ascending(); // sort the nodes in ascending order. You must implement the recursive Merge Sort algorithm
 	
 	// Note: it's okay if sort_ascending() calls a recursive private function to perform the sorting.
