@@ -30,7 +30,7 @@ public:
 	void push_front(int); // insert a new value at the front of the list 
 	void push_back(int); // insert a new value at the back of the list 
 	void insert(int val, unsigned int index); // insert a new value in the list at the specified index 
-	void fbs(Node*, Node**, Node**);
+	void split(Node*, Node**, Node**);
 	void mergeSortAscending(Node**);
 	void mergeSortDescending(Node**);
 	Node* recursiveSortAscending(Node*, Node*);

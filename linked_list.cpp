@@ -165,14 +165,14 @@ void Linked_List::insert(int val, unsigned int index){
 }
 
 /*********************************************************************
-** Function: fbs(Node* source, Node** front, Node** back)
+** Function: split(Node* source, Node** front, Node** back)
 ** Description: divides the larger list into two smaller lists
 ** Parameters: Node* source, Node** front, Node** back
 ** Pre-Conditions: larger, initial list exists
 ** Post-Conditions: two smaller lists are created from the larger one
 *********************************************************************/
 
-void Linked_List::fbs(Node* source, Node** front, Node** back){
+void Linked_List::split(Node* source, Node** front, Node** back){
     Node* fast;
     Node* slow;
     slow = source;
@@ -205,7 +205,7 @@ void Linked_List::mergeSortAscending(Node** headref){
     if(head1 == NULL || head1->next == NULL){
         return;
     }
-    fbs(head1,&a,&b);
+    split(head1,&a,&b);
     mergeSortAscending(&a);
     mergeSortAscending(&b);
 
@@ -227,7 +227,7 @@ void Linked_List::mergeSortDescending(Node** headref){
     if(head1 == NULL || head1->next == NULL){
         return;
     }
-    fbs(head1,&a,&b);
+    split(head1,&a,&b);
     mergeSortDescending(&a);
     mergeSortDescending(&b);
 
