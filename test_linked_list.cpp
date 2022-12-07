@@ -12,6 +12,16 @@ void pause() {
 
 int main(int argc, char const *argv[])
 {
+	int programChoice = 0;
+	cout<<"Enter 1 to run the fractal recursion program and 2 to run the linked list program"<<endl;
+	cin >> programChoice;
+
+	if(programChoice == 1){
+		cout<<"run fractal program"<<endl;
+	}
+
+	else{
+
 	Linked_List l;
 	cout << "\n\nList successfully created!!\n\n";;
 
@@ -108,4 +118,5 @@ int main(int argc, char const *argv[])
 		cout << "Test 5 FAILED\n";
 
 	return 0;
+	}
 }
