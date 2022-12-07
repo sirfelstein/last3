@@ -19,7 +19,7 @@ private:
 	Node* current;// a pointer to the first node in the list
 	// anything else you need...
 public:
-	Linked_List();
+	Linked_List(); 
 
 	int get_length();
 	Node* get_head() const;
